@@ -18,7 +18,7 @@ class AlienInvasion:
         pygame.display.set_caption("Alien Invasion")
         self.actual_screen_size = (self.screen.get_width(), self.screen.get_height())
         self.actual_screen_width, self.actual_screen_height = self.actual_screen_size
-        self.unscaled_bg = pygame.image.load('images/stars.jpg')
+        self.unscaled_bg = pygame.image.load('images/background.jpg')
         self.bg = pygame.transform.scale(self.unscaled_bg, self.actual_screen_size)
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
