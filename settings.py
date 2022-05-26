@@ -1,5 +1,3 @@
-import pygame
-
 class Settings:
     """A class to store all the settings for Alien Invasion."""
 
