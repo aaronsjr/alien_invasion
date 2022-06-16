@@ -23,7 +23,7 @@ class AlienInvasion:
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
-
+        self.fps_clock = pygame.time.Clock()
         self._create_fleet()
 
     def run_game(self):
@@ -49,6 +49,10 @@ class AlienInvasion:
         # Check for any bullets that have hit aliens. If so then remove that bullet
         # and the alien that was hit.
         collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
+        if not self.aliens:
+            # Destroy existing bullets and create new fleet
+            self.bullets.empty()
+            self._create_fleet()
 
     def _check_events(self):
         """Respond to keypresses and mouse events."""
@@ -92,6 +96,7 @@ class AlienInvasion:
             bullet.draw_bullet()
         self.aliens.draw(self.screen)
         
+        self.fps_clock.tick(self.settings.FPS)
         pygame.display.flip()
     
     def _create_fleet(self):
