@@ -16,6 +16,8 @@ class Bullet(Sprite):
         self.settings.bullet_height)
         self.rect.midtop = ai_game.ship.rect.midtop
 
+        # Play bullet sound
+        pygame.mixer.Sound.play(ai_game.sounds.bullet_sound)
         # Store the bullets position as a decimal value
         self.y = float(self.rect.y)
 

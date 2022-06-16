@@ -7,6 +7,7 @@ from game_stats import GameStats
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
+from sounds import Sounds
 
 class AlienInvasion:
     """Overall class to manage game assets and behaviour."""
@@ -18,6 +19,9 @@ class AlienInvasion:
 
         # Create a GameStats instance to store statistics about the current game
         self.stats = GameStats(self)
+        
+        # Create an instance of sounds.
+        self.sounds = Sounds()
         
         self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
         pygame.display.set_caption("Alien Invasion")
@@ -61,6 +65,8 @@ class AlienInvasion:
         # Check for any bullets that have hit aliens. If so then remove that bullet
         # and the alien that was hit.
         collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
+        for collision in collisions:
+            pygame.mixer.Sound.play(self.sounds.alien_explosion)
         if not self.aliens:
         # Destroy existing bullets and create new fleet
             self.bullets.empty()
