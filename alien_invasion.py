@@ -87,7 +87,7 @@ class AlienInvasion:
                 elif event.type == pygame.KEYUP:
                     self._check_keyup_events(event)
                 
-                elif event.type == pygame.MOUSEBUTTONDOWN:
+                elif event.type == pygame.MOUSEBUTTONDOWN and self.stats.game_active == False:
                     mouse_pos = pygame.mouse.get_pos()
                     self._check_play_button(mouse_pos)
 
