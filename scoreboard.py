@@ -10,7 +10,7 @@ class Scoreboard:
         self.stats = ai_game.stats
 
         # Font colours for scoring information
-        self.text_colour = (30, 30, 30)
+        self.text_colour = (66, 149, 245)
         self.font = pygame.font.SysFont(None, 48)
 
         # Prepare the initial score image
@@ -20,7 +20,7 @@ class Scoreboard:
         """Turn the scoreboard into a rendered image"""
         score_str = str(self.stats.score)
         self.score_image = self.font.render(score_str, True,
-                self.text_colour, self.settings.bg_color)
+                self.text_colour, None)
         
         # Display the score at the top right of the screen
         self.score_rect = self.score_image.get_rect()
