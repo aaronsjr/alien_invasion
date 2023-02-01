@@ -10,6 +10,7 @@ from alien import Alien
 from sounds import Sounds
 from button import Button
 from scoreboard import Scoreboard
+from random import randint
 
 class AlienInvasion:
     """Overall class to manage game assets and behaviour."""
@@ -74,6 +75,10 @@ class AlienInvasion:
         collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
         for collision in collisions:
             pygame.mixer.Sound.play(self.sounds.alien_explosion)
+        if collisions:
+            for aliens in collisions.values():
+                self.stats.score += (self.settings.alien_points * len(aliens)) + randint(-10,30)
+            self.sb.prep_score()
         if not self.aliens:
         # Destroy existing bullets and create new fleet
             self.bullets.empty()
@@ -100,7 +105,8 @@ class AlienInvasion:
         if self.play_button.rect.collidepoint(mouse_pos):
             # Reset game stats
             self.stats.reset_stats()
-            self.stats.game_active = True      
+            self.stats.game_active = True   
+            self.sb.prep_score()   
 
             # Remove any remaining aliens and bullets
             self.aliens.empty()
