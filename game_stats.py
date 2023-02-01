@@ -17,7 +17,7 @@ class GameStats:
             # If the file does not exist create the file and initialise the value
             # of highscore as 0 and write that to the file.
             with open('highscore.txt', 'w') as highscore:
-                self.high_score = 0
+                self.high_score = 1000
                 highscore.write(str(self.high_score))
                 
 
