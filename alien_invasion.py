@@ -23,7 +23,7 @@ class AlienInvasion:
         # Create an instance of sounds.
         self.sounds = Sounds()
         
-        self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+        self.screen = pygame.display.set_mode((1920,1080))
         pygame.display.set_caption("Alien Invasion")
         self.actual_screen_size = (self.screen.get_width(), self.screen.get_height())
         self.actual_screen_width, self.actual_screen_height = self.actual_screen_size
