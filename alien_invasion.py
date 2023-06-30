@@ -227,7 +227,7 @@ class AlienInvasion:
         if self.stats.ships_left > 0:
             # Decrement ships_left
             self.stats.ships_left -= 1
-
+            
             # Get rid of any remaining aliens and bullets
             self.aliens.empty()
             self.bullets.empty()
@@ -239,6 +239,8 @@ class AlienInvasion:
             # Pause
             sleep(0.5)
         else:
+            # Play game over sound
+            pygame.mixer.Sound.play(self.sounds.game_over)
             self.stats.game_active = False
             pygame.mouse.set_visible(True)
     
