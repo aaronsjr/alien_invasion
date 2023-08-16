@@ -23,7 +23,7 @@ class AlienInvasion:
         # Create an instance of sounds.
         self.sounds = Sounds()
         
-        self.screen = pygame.display.set_mode((0,0), pygame.FULLSCREEN)
+        self.screen = pygame.display.set_mode((1920,1080))
         pygame.display.set_caption("Alien Invasion")
         self.actual_screen_size = (self.screen.get_width(), self.screen.get_height())
         self.actual_screen_width, self.actual_screen_height = self.actual_screen_size
@@ -227,7 +227,7 @@ class AlienInvasion:
         if self.stats.ships_left > 0:
             # Decrement ships_left
             self.stats.ships_left -= 1
-
+            
             # Get rid of any remaining aliens and bullets
             self.aliens.empty()
             self.bullets.empty()
@@ -239,6 +239,8 @@ class AlienInvasion:
             # Pause
             sleep(0.5)
         else:
+            # Play game over sound
+            pygame.mixer.Sound.play(self.sounds.game_over)
             self.stats.game_active = False
             pygame.mouse.set_visible(True)
     
